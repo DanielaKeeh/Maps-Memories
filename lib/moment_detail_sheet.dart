@@ -36,7 +36,7 @@ void showMomentDetail(BuildContext context, Moment moment) {
               child: Container(
                 height: 200,
                 width: double.infinity,
-                color: columbia.withOpacity(0.3),
+                color: columbia.withValues(alpha: 0.3),
                 child: const Icon(Icons.image, size: 60, color: vanDyke),
               ),
             ),
@@ -53,7 +53,7 @@ void showMomentDetail(BuildContext context, Moment moment) {
               '${moment.fecha.day}/${moment.fecha.month}/${moment.fecha.year}',
               style: GoogleFonts.sniglet(
                 fontSize: 14,
-                color: vanDyke.withOpacity(0.6),
+                color: vanDyke.withValues(alpha: 0.6),
               ),
             ),
             const SizedBox(height: 20),
