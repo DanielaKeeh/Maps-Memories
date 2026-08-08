@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/map_screen.dart';
+import 'theme/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,12 @@ class MyApp extends StatelessWidget {
       title: 'Maps Memories',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.olivine,
+          primary: AppColors.olivine,
+          secondary: AppColors.columbia,
+          background: Colors.white,
+        ),
         useMaterial3: true,
       ),
       home: const MapScreen(),

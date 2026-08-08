@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'moment.dart';
+import 'models/memory.dart';
+import 'theme/app_colors.dart';
 
-const Color olivine = Color(0xFF9BAD50);
-const Color columbia = Color(0xFFB6CFE4);
-const Color vanDyke = Color(0xFF393027);
-
-void showMomentDetail(BuildContext context, Moment moment) {
+void showMomentDetail(BuildContext context, Memory memory) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -25,7 +22,7 @@ void showMomentDetail(BuildContext context, Moment moment) {
                 width: 40,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: columbia,
+                  color: AppColors.columbia,
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -36,24 +33,33 @@ void showMomentDetail(BuildContext context, Moment moment) {
               child: Container(
                 height: 200,
                 width: double.infinity,
-                color: columbia.withValues(alpha: 0.3),
-                child: const Icon(Icons.image, size: 60, color: vanDyke),
+                color: AppColors.columbia.withValues(alpha: 0.3),
+                child: const Icon(Icons.image, size: 60, color: AppColors.vanDyke),
               ),
             ),
             const SizedBox(height: 16),
             Text(
-              moment.texto,
+              memory.title,
               style: GoogleFonts.sniglet(
-                fontSize: 18,
-                color: vanDyke,
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: AppColors.vanDyke,
               ),
             ),
             const SizedBox(height: 8),
             Text(
-              '${moment.fecha.day}/${moment.fecha.month}/${moment.fecha.year}',
+              memory.description,
+              style: GoogleFonts.sniglet(
+                fontSize: 18,
+                color: AppColors.vanDyke,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '${memory.date.day}/${memory.date.month}/${memory.date.year}',
               style: GoogleFonts.sniglet(
                 fontSize: 14,
-                color: vanDyke.withValues(alpha: 0.6),
+                color: AppColors.vanDyke.withValues(alpha: 0.6),
               ),
             ),
             const SizedBox(height: 20),

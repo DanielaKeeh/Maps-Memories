@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/memory.dart';
-
+import '../moment_detail_sheet.dart';
+import '../theme/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
@@ -52,54 +54,19 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   void _onMarkerTapped(Memory memory) {
-    // Esto es el Bottom Sheet simple que Persona B luego mejorará.
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                memory.title,
-                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                memory.description,
-                style: const TextStyle(fontSize: 16),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  const Icon(Icons.calendar_today, size: 18, color: Colors.grey),
-                  const SizedBox(width: 6),
-                  Text(
-                    "${memory.date.day}/${memory.date.month}/${memory.date.year}",
-                    style: const TextStyle(color: Colors.grey, fontSize: 14),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-            ],
-          ),
-        );
-      },
-    );
+    showMomentDetail(context, memory);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mapa de nosotros', style: TextStyle(fontWeight: FontWeight.w600)),
-        backgroundColor: Colors.pinkAccent,
-        foregroundColor: Colors.white,
+        title: Text(
+          'Mapa de nosotros',
+          style: GoogleFonts.sniglet(fontWeight: FontWeight.w600, color: AppColors.vanDyke),
+        ),
+        backgroundColor: AppColors.olivine,
+        foregroundColor: AppColors.vanDyke,
         centerTitle: true,
       ),
       body: GoogleMap(
